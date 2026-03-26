@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap');
+
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-gradient-start: #f1f5f9;
+  --bg-gradient-end: #e2e8f0;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --text-main: #334155;
+  --text-muted: #94a3b8;
+  --danger: #ef4444;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-main);
+  padding: 1rem;
+}
+
+.app-wrapper {
+  width: 100%;
+  max-width: 480px;
+}
+
+.todo-container {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  text-align: center;
+  letter-spacing: -0.025em;
+}
+
+.input-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.todo-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.todo-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.add-button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.add-button:hover {
+  background: var(--primary-hover);
+}
+
+.add-button:active {
+  transform: scale(0.95);
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+  border: 1px solid #f1f5f9;
+}
+
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.task-item.completed .checkbox {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.task-text {
+  font-size: 1.05rem;
+  transition: all 0.2s ease;
+}
+
+.task-item.completed .task-text {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  color: #cbd5e1;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+}
+
+.task-item:hover .delete-button {
+  color: var(--danger);
+  background: #fef2f2;
+}
+
+.delete-button:hover {
+  color: white !important;
+  background: var(--danger) !important;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem 0;
+  font-style: italic;
+}
+
+/* Vue List Transitions */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+}
+.list-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(-30px);
+  /* Ensure element being removed doesn't take up layout space during transition */
+  position: absolute;
+}
