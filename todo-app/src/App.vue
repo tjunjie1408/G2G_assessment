@@ -89,7 +89,7 @@ const deleteTask = (id) => {
         </transition-group>
         
         <div v-if="tasks.length === 0" class="empty-state">
-          You have no tasks yet. Add one above!
+          You have no tasks yet.
         </div>
       </div>
     </div>
